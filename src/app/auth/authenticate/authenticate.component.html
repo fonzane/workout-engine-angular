@@ -1,0 +1,7 @@
+<form #f="ngForm" class="box">
+  <h1>Register/Login</h1>
+  <input type="email" name="email" placeholder="email" ngModel>
+  <input type="password" name="password" placeholder="password" ngModel>
+  <button (click)="onSignin(f)">Login</button>
+  <button (click)="onSignup(f)">Register</button>
+</form>

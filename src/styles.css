@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+/* ==== Styles for the workout calendar ==== */
+
+.notify {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    padding: 3px;
+    position:relative;
+    left: 10px;
+    top: -1px;
+    display: inline-block;
+    transform: rotate(-45deg);
+    cursor:pointer;
+}
+
+.workout-table td, th {
+    border: 1px solid black;
+    text-align: right;
+    padding: 3px;
+}
+
+.rotateArrow {
+    animation-name: rotateArrow;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes rotateArrow {
+    from{  transform: rotate(-45deg)   }
+    to  {  transform: rotate(45deg) }
+  }
+  
+  .rotateArrowBack {
+    animation-name: rotateArrowBack;
+    animation-duration:0.25s;
+    animation-fill-mode:forwards;
+  }
+  
+  @keyframes rotateArrowBack {
+    from{  transform: rotate(45deg)   }
+    to  {  transform: rotate(-45deg) }
+  }

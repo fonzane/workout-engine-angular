@@ -1,0 +1,27 @@
+
+
+.calendar {
+    margin:auto;
+    margin-top:15px;
+    width:75% !important;
+}
+
+#calendarHeading {
+    padding-top:17px;   
+}
+
+.weekDay {
+    text-align:center;
+}
+
+.cell {
+    text-align:center;
+    width: 100px;
+}
+
+.btn-secondary{
+    height:60px;
+    width:100%;
+}
+
+/* ==== Styling für Workouttabelle ==== */

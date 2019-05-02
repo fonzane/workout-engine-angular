@@ -1,0 +1,21 @@
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+#daySelector {
+    display:inline !important;
+    width:65px !important;
+    margin-left:10px;
+  }
+  
+  #monthSelector {
+    display:inline !important;
+    width:150px !important;
+    margin-left:10px;
+  }
+  
+  #yearSelector {
+    display:inline !important;
+    width:90px !important;
+    margin-left:10px;
+  }
