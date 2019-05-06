@@ -1,20 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand">Workout Engine</a>
+    <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"  aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarTogglerDemo02">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="workout-form">Neues Workout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="workout-calendar">Workout Kalender</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="workout-edit">Workouts bearbeiten</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" *ngIf="authService.isAuthenticated()"><a class="nav-link" (click)="onLogout()">Logout</a></li>
+        <li class="nav-item" *ngIf="!authService.isAuthenticated()"><a class="nav-link" routerLinkActive="active" routerLink="authenticate">Login/Register</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
 <div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-lg-4" style="margin-top: .5rem;">
-      <h1 class="text-center" style="color:#008bff">Workout Engine</h1>
-    </div>
-  </div>
-  <div class="navbar navbar-expand-md">
-    <div class="nav nav-tabs" style="flex-direction: unset">
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="workout-form">Neues Workout</a>
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="workout-calendar">Workout Kalender</a>
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="workout-edit">Workouts bearbeiten</a>
-    </div>
-    <ul class="nav nav-tabs ml-auto">
-      <li class="nav-item" *ngIf="authService.isAuthenticated()"><a class="nav-link" (click)="onLogout()"style="color: #008bff">Logout</a></li>
-      <li class="nav-item" *ngIf="!authService.isAuthenticated()"><a class="nav-link" routerLinkActive="active" routerLink="authenticate">Login/Register</a></li>
-    </ul>
-  </div>
-  <br>
   <router-outlet></router-outlet>
 </div>
