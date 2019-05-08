@@ -19,11 +19,11 @@ export class WorkoutEditComponent implements OnInit {
   ngOnInit() {
     try {
       this.http.get('https://workout-engine.firebaseio.com/' + this.authService.getCurrentUserID() + '.json').subscribe((resp) => {
-        
+
         for(let workout of Object.values(resp)) {
           this.workouts.push(workout);
         }
-  
+
         for(let workout of this.workouts) {
           let month = +workout.date.split('.')[1] + 1;
           this.workoutDates.push(workout.date.split('.')[0] + '.' + month + '.' + workout.date.split('.')[2]);
@@ -82,11 +82,11 @@ export class WorkoutEditComponent implements OnInit {
   }
 
   onDeleteExercise(exerciseName, workout) {
-    for(let i = 0; i < 5; i++) {
+    for(let i = 0; i < workout.exercises.length; i++) {
       if(workout.exercises[i].name === exerciseName) {
         workout.exercises.splice(i, 1);
       }
     }
   }
-  
+
 }
