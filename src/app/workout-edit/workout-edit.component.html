@@ -1,36 +1,39 @@
 <div class="container" *ngFor="let workout of workouts">
-  <h4 style="display: inline-block">Workout vom {{workoutDates[workouts.indexOf(workout)]}}:</h4>
-  <a class="delButton" (click)="onDelete(workouts.indexOf(workout))">
-    <img src="assets/delete.png" alt="delete">
-  </a>
-  <br>
-  <div *ngFor="let exercise of workout.exercises">
-    <ul class="list-group" style="cursor: pointer" (click)="onEdit(exercise, f)">
-      <div class="row">
-        <div class="col" style="max-width: 12em">
-          <b>{{exercise.name}}:</b>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            Workout vom {{workoutDates[workouts.indexOf(workout)]}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngFor="let exercise of workout.exercises">
+          <ul class="list-group" style="cursor: pointer" (click)="onEdit(exercise, f)">
+            <div class="row">
+              <div class="col" style="max-width: 12em">
+                <b>{{exercise.name}}:</b>
+              </div>
+              <div class="col" *ngFor="let set of exercise.sets" style="border: 1px solid black; max-width: 5em">
+                &nbsp;{{set}}
+              </div>
+            </div>
+          </ul>
         </div>
-        <div class="col" *ngFor="let set of exercise.sets" style="border: 1px solid black; max-width: 5em">
-          &nbsp;{{set}}
-        </div>
-      </div>
-    </ul>
-  </div>
-  <br>
-  <form (ngSubmit)="onAddExercise(f, workout)" #f="ngForm">
-    <div class="row">
-      <div class="col">
-        <input class="form-control" type="text" name="uebung" placeholder="Übung" ngModel>
-      </div>
-      <div *ngFor="let i of sets" class="col">
-        <input type="number" name="set{{i}}" class="form-control" placeholder="Satz {{i}}" ngModel>
-      </div>
-      <div class="col-lg-3">
-        <button type="submit" class="btn btn-success">Add</button>
-        <button type="button" class="btn btn-danger" (click)="onDeleteExercise(f.value.uebung, workout)">Remove</button>
-        <button type="button" class="btn btn-primary" (click)="onClearForm(f)">Clear</button>
-      </div>
-    </div>
-  </form>
-  <hr>
+        <br>
+        <form (ngSubmit)="onAddExercise(f, workout)" #f="ngForm">
+          <div class="row">
+            <div class="col-md-2">
+              <input class="form-control" type="text" name="uebung" placeholder="Übung" ngModel>
+            </div>
+            <div *ngFor="let i of sets" class="col-md-2">
+              <input type="number" name="set{{i}}" class="form-control" placeholder="Satz {{i}}" ngModel>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-between mx-1">
+            <button type="submit" class="btn btn-success">Add</button>
+            <button type="button" class="btn btn-danger" (click)="onDeleteExercise(f.value.uebung, workout)">Remove</button>
+            <button type="button" class="btn btn-primary" (click)="onClearForm(f)">Clear</button>
+          </div>
+        </form>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>

@@ -11,7 +11,7 @@
 
 .box h1 {
     font-weight: 500;
-    color: #007bff;
+    color: black;
 }
 
 .box input[type="email"], .box input[type="password"] {

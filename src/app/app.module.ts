@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { WorkoutService } from './shared/workout.service';
 import { WorkoutEditComponent } from './workout-edit/workout-edit.component';
 import { AuthenticateComponent } from './auth/authenticate/authenticate.component';
 import { AuthGuardService } from './auth/authenticate/auth-guard.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AuthGuardService } from './auth/authenticate/auth-guard.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatExpansionModule
   ],
   providers: [WorkoutService, AuthGuardService],
   bootstrap: [AppComponent]
