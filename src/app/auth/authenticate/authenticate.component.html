@@ -1,7 +1,14 @@
-<form #f="ngForm" class="box">
-  <h1>Register/Login</h1>
-  <input type="email" name="email" placeholder="email" ngModel>
-  <input type="password" name="password" placeholder="password" ngModel>
-  <button (click)="onSignin(f)">Login</button>
-  <button (click)="onSignup(f)">Register</button>
-</form>
+<mat-card>
+  <form #f="ngForm" class="box">
+    <h1 class="mat-h1">Login/Register</h1>
+    <mat-form-field>
+      <input matInput type="email" name="email" placeholder="email" required ngModel>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" name="password" placeholder="password" required ngModel>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button (click)="onSignin(f)">Login</button>
+    <button mat-raised-button (click)="onSignup(f)">Register</button>
+  </form>
+</mat-card>

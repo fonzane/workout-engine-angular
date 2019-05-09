@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AuthService } from '../auth.service';
 import { NgForm } from '@angular/forms';
+
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-authenticate',
@@ -10,15 +11,15 @@ import { NgForm } from '@angular/forms';
 export class AuthenticateComponent implements OnInit {
   @ViewChild('f') authForm: NgForm;
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     setTimeout(() => {
       this.authForm.setValue({
         email: 'test@test.com',
         password: '123456'
-      })
-    }, 250)
+      });
+    }, 250);
   }
 
   onSignup(form) {

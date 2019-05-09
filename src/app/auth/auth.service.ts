@@ -22,7 +22,7 @@ export class AuthService {
   signinUser(email: string, password: string) {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(() => {
-        this.router.navigate(['workout-calendar']);
+        this.router.navigate(['workout-edit']);
         firebase.auth().currentUser.getIdToken().then((token: string) => {
           this.token = token;
         })

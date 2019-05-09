@@ -1,55 +1,7 @@
-.box {
-    width:50%;
-    height: 50%;
-    padding: 40px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+mat-form-field {
+  display: block;
 }
 
-.box h1 {
-    font-weight: 500;
-    color: black;
-}
-
-.box input[type="email"], .box input[type="password"] {
-    display: block;
-    border: 0;
-    background: none;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #007bff;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: black;
-    border-radius: 24px;
-    transition: 0.25s;
-}
-
-.box input[type="email"]:focus, .box input[type="password"]:focus {
-    width: 280px;
-    border-color: #2ecc71;
-}
-
-.box button {
-    border:0;
-    background:none;
-    width: 150px;
-    display:inline-block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #2ecc71;
-    padding: 14px 40px;
-    outline: none;
-    color: #007bff;
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer;
-}
-
-.box button:hover {
-    background: #2ecc71;
+form button:last-child {
+  float: right;
 }

@@ -12,8 +12,8 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./workout-form.component.css']
 })
 export class WorkoutFormComponent implements OnInit {
-  exerciseCount: number[] = [];
-  months: string[] = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+  exerciseCount: number[] = [0];
+  months: string[] = ['Januar', "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 
   selectedDay = "1";
   selectedMonth = "Mai";
@@ -36,6 +36,7 @@ export class WorkoutFormComponent implements OnInit {
 
   onClearForm() {
     this.exerciseCount = [];
+    console.log(this.exerciseCount);
   }
 
   async onWorkoutSubmit(form) {
@@ -47,12 +48,12 @@ export class WorkoutFormComponent implements OnInit {
       let uebung = form.value[`uebung${i}`];
 
       if(!uebung) {
-        alert("Sie haben vergessen eine Übung einzutragen.");
+        alert('Sie haben vergessen eine Übung einzutragen.');
         return;
       }
-      
+
       // Get the sets and put them in an array
-      let sets = []
+      const sets = []
       for(let j = 1; j <= 5; j++) {
         if(form.value[`satz${j}uebung${i}`]){
           sets.push(form.value[`satz${j}uebung${i}`]);
@@ -60,24 +61,25 @@ export class WorkoutFormComponent implements OnInit {
       }
 
       // Create an exercise and add it to the array of exercises
-      let exercise = new Exercise(uebung, sets);
+      const exercise = new Exercise(uebung, sets);
       exercises.push(exercise);
     }
 
-    let workoutDate = form.value['daySelector'] + "." + this.workoutService.monthConverter(form.value['monthSelector']) + "." + form.value['yearSelector']
+// tslint:disable-next-line: max-line-length
+    const workoutDate = form.value['daySelector'] + '.' + this.workoutService.monthConverter(form.value['monthSelector']) + '.' + form.value['yearSelector']
 
     // Create a new workout with an ID, Date and the exercises
-    let workout: Workout = new Workout(this.workoutService.workouts.length + 1,
+    const workout: Workout = new Workout(this.workoutService.workouts.length + 1,
                                        workoutDate,
                                        exercises);
-    
-    //Check if a workout already exists on the current date.
-    let workouts = await this.workoutService.getWorkouts().then((resp) => resp);
-    
+
+    // Check if a workout already exists on the current date.
+    const workouts = await this.workoutService.getWorkouts().then((resp) => resp);
+
     try {
       for(let workout1 of Object.values(workouts)) {
         if(workout1.date === workoutDate) {
-          alert("Bitte tragen Sie nur ein Workout pro Tag ein.");
+          alert('Bitte tragen Sie nur ein Workout pro Tag ein.');
           return;
         }
       }
@@ -86,7 +88,7 @@ export class WorkoutFormComponent implements OnInit {
     }
 
     this.workoutService.saveWorkoutToDb(workout);
-    
+
     alert("Ihr Workout wurde gespeichert. Vielen Dank.")
 
     this.exerciseCount = [];

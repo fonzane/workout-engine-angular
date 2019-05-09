@@ -23,7 +23,7 @@
     </div>
     <div class="row" style="margin-top: 15px;" *ngFor="let count of exerciseCount">
       <div class="col" style="border-right: 1px solid rgba(0,0,0,.1)">
-        <input type="text" class="form-control" name="uebung{{count}}" placeholder="Übung {{count}}" ngModel>
+        <input type="text" class="form-control" name="uebung{{count}}" placeholder="Übung {{count + 1}}" ngModel>
       </div>
       <div class="col">
         <input type="number" class="form-control" name="satz1uebung{{count}}" placeholder="Satz 1" ngModel>
