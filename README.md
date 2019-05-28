@@ -1,5 +1,5 @@
 # WorkoutEngineAngular
-Ein simpler Workout Tracker geschrieben mit Angular im Frontend und Firebase im Backend. Zuerst kann ein User erstellt werden oder der zur Default-Login des Testaccounts genutzt werden. Workouts werden Userspezifisch in die Datenbank eingetragen. Außerdem können sie detailliert unter `Workouts bearbeiten` bearbeitet, oder unter `Workout Kalender` im Kalendar angezeigt werden. Diese Erstellung dieses Projekts diente in erster Linie dem Lernen. Es ist (noch) nicht für den öffentlichen Gebrauch gedacht.
+Ein simpler Workout Tracker geschrieben mit Angular im Frontend und Firebase im Backend. Zuerst kann ein User erstellt werden oder der Default-Login des Testaccounts genutzt werden. Workouts werden Userspezifisch in die Datenbank eingetragen. Außerdem können sie detailliert unter `Workouts bearbeiten` bearbeitet, oder unter `Workout Kalender` im Kalendar angezeigt werden. Diese Erstellung dieses Projekts diente in erster Linie dem Lernen. Es ist (noch) nicht für den öffentlichen Gebrauch gedacht.
 
 # WorkoutEngineAngular
 
