@@ -1,39 +1,54 @@
-<div class="container" *ngFor="let workout of workouts">
-  <mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-            Workout vom {{workoutDates[workouts.indexOf(workout)]}}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div *ngFor="let exercise of workout.exercises">
-          <ul class="list-group" style="cursor: pointer" (click)="onEdit(exercise, f)">
-            <div class="row">
-              <div class="col-md-2">
-                <b>{{exercise.name}}:</b>
-              </div>
-              <div class="col-md-2" *ngFor="let set of exercise.sets" style="border: 1px solid black; max-width: 5em">
-                &nbsp;{{set}}
-              </div>
-            </div>
-          </ul>
+<mat-spinner style="margin: auto;" *ngIf="isLoading"></mat-spinner>
+
+<mat-accordion *ngIf="!isLoading">
+  <mat-expansion-panel *ngFor="let workout of workouts">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Workout vom {{ workout.date }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="col-6">
+        <i class="material-icons" style="cursor: context-menu" title="Klicke auf die Übungen um sie zu bearbeiten.">info</i>
+      </div>
+      <div class="col-6 text-right">
+          <i class="material-icons" style="cursor: pointer" (click)="onRemoveWorkout(workout)"> delete</i>
+      </div>
+    </div>
+    <div class="row" *ngFor="let exercise of workout.exercises" style="cursor: pointer" (click)="fillForm(exercise, editForm)">
+      <div class="col-sm">
+        {{ exercise.name }}
+      </div>
+      <div class="col-sm" *ngFor="let set of exercise.sets">
+        {{ set.rep }} mal {{ set.weight }} kg
+      </div>
+    </div>
+    <br>
+    <form #editForm="ngForm">
+      <div class="row">
+        <div class="col-sm-2">
+          <input type="text" class="form-control" name="uebung" placeholder="Übung" required ngModel>
         </div>
-        <br>
-        <form (ngSubmit)="onAddExercise(f, workout)" #f="ngForm">
-          <div class="row">
-            <div class="col-md-2">
-              <input class="form-control" type="text" name="uebung" placeholder="Übung" ngModel>
-            </div>
-            <div *ngFor="let i of sets" class="col-md-2">
-              <input type="number" name="set{{i}}" class="form-control" placeholder="Satz {{i}}" ngModel>
-            </div>
-          </div>
-          <div class="row d-flex justify-content-between mx-1 mt-1">
-            <button type="submit" class="btn btn-success">Add</button>
-            <button type="button" class="btn btn-primary" (click)="onClearForm(f)">Clear</button>
-            <button type="button" class="btn btn-danger" (click)="onDeleteExercise(f.value.uebung, workout)">Remove</button>
-          </div>
-        </form>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
+        <div class="col-sm-2"  *ngFor="let i of [1,2,3,4,5]">
+          <input type="number" class="form-control" name="rep{{i}}" placeholder="Satz {{i}}" ngModel>
+          <input type="number" class="form-control" name="weight{{i}}" placeholder="Gewicht" ngModel>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-3">
+          <button mat-raised-button color="primary" type="button" (click)="onAddExercise(editForm, workout)">Add/Replace</button>
+        </div>
+        <div class="col-sm-3 text-center">
+          <button mat-raised-button color="accent" type="button" (click)="onClearForm(editForm)">Clear</button>
+        </div>
+        <div class="col-sm-3 text-center">
+          <button mat-raised-button color="warn" type="button" (click)="onRemoveExercise(editForm, workout)">Remove</button>
+        </div>
+        <div class="col-sm-3 text-right">
+          <button mat-raised-button color="primary" style="background-color:green" type="button" (click)="onSaveWorkouts()">Save</button>
+        </div>
+      </div>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>

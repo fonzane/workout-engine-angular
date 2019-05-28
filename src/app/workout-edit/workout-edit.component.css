@@ -1,11 +1,13 @@
-.container {
-  margin-top: 1rem;
+mat-accordion {
+  display: block;
+  margin-top: 10px;
 }
 
-.delButton {
-    cursor: pointer;
+mat-expansion-panel {
+  margin-bottom: 10px;
 }
 
-img {
-    margin-bottom: 8px;
+.row .col-sm {
+  border: 1px solid rgb(202, 202, 202);
+  border-radius: 5%;
 }

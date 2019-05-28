@@ -1,30 +1,34 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" routerLink="workout-form">Workout Engine</a>
-    <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"  aria-expanded="false" aria-label="Toggle navigation" aria-controls="navbarTogglerDemo02">
+    <a class="navbar-brand" [routerLink]="['workout-form']">Workout Engine</a>
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <div class="collapse navbar-collapse" [ngClass]="{'show': navbarOpen}">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="workout-form">Neues Workout</a>
+          <a class="nav-link" [routerLink]="['workout-form']" routerLinkActive="active" >Neues Workout</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="workout-calendar">Workout Kalender</a>
+          <a class="nav-link" [routerLink]="['workout-calendar']" routerLinkActive="active" >Workout Kalender</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="workout-edit">Workouts bearbeiten</a>
+          <a class="nav-link" [routerLink]="['workout-edit']" routerLinkActive="active" >Workouts bearbeiten</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item" *ngIf="authService.isAuthenticated()"><a class="nav-link" (click)="onLogout()">Logout</a></li>
-        <li class="nav-item" *ngIf="!authService.isAuthenticated()"><a class="nav-link" routerLinkActive="active" routerLink="authenticate">Login/Register</a></li>
+        <li class="nav-item" *ngIf="!this.authService.isAuthenticated()">
+          <a class="nav-link" routerLinkActive="active" routerLink="authenticate">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="this.authService.isAuthenticated()" style="cursor: pointer">
+            <a class="nav-link" (click)="onLogout()">Logout</a>
+          </li>
       </ul>
     </div>
   </div>
 </nav>
-<br>
+
 <div class="container">
   <router-outlet></router-outlet>
 </div>

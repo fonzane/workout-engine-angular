@@ -1,44 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 
-import { WorkoutService } from './shared/workout.service';
 import { AuthService } from './auth/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  exerciseCountArr: number[] = [];
+export class AppComponent implements OnInit {
+  title = 'workout-engine-new';
+  navbarOpen = false;
 
-  constructor(private workoutService: WorkoutService,
-              public authService: AuthService,
-              public router: Router) {
+  constructor(public authService: AuthService, private router: Router) {}
 
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
   }
-  
+
   ngOnInit() {
     firebase.initializeApp({
-      apiKey: "AIzaSyDmUTRb_VBwRuJJAjeCXpuYNmJuTa6vRaQ",
-      authDomain: "workout-engine.firebaseapp.com"
+      apiKey: 'AIzaSyAJrbeynd5jFb1U_a5pwkNRuQJhkA2unCA',
+      authDomain: 'workoutengine-7df19.firebaseapp.com'
     });
-  }
-
-  onExerciseCount(exerciseCount) {
-    this.exerciseCountArr = [];
-    if(exerciseCount > 0 && exerciseCount <= 15) {
-      for(let i = 1; i <= exerciseCount; i++) {
-        this.exerciseCountArr.push(i);
-      }
-    } else {
-      alert("Bitte geben Sie eine gültige Zahl ein.")
-    }
   }
 
   onLogout() {
     this.authService.logout();
-    this.router.navigate(['/authenticate']);
+    this.router.navigate(['authenticate']);
   }
 }

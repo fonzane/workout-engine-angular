@@ -1,69 +1,69 @@
-<div class="row" *ngIf="exerciseCount.length === 0">
-  <div class="col">
-    <div>
-      <h3 class="text-center">Wie viele Übungen haben Sie in Ihrem Workout absolviert?</h3>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-md-6">
-        <input type="number" class="form-control" min="0" max="15" #exerciseCountInput placeholder="1 - 15">
-      </div>
-      <div class="col-md-6" style="text-align: right">
-        <button (click)="onExerciseCount(exerciseCountInput.value)" class="btn btn-outline-primary">Eingabetabelle generieren</button>
-      </div>
-    </div>
+<br>
+<h1 class="text-center">Neues Workout hinzufügen</h1>
+<hr>
+<div class="row">
+  <div class="col-lg-6">
+    <label>Wie viele Übungen haben Sie in Ihrem Workout absolviert?</label>
+  </div>
+  <div class="col-lg-6">
+    <input type="number" class="form-control" placeholder="1 - 15" min="1" max="15" (input)="onExerciseChange(exerciseCount.value)" #exerciseCount>
   </div>
 </div>
-
-<div *ngIf="exerciseCount.length !== 0" style="margin-top: 10px">
-  <form (ngSubmit)="onWorkoutSubmit(workoutForm)" #workoutForm="ngForm">
-    <div class="row">
-      <h4 style="width: 100%; text-align: center;">Bitte tragen Sie Ihr Workout ein.</h4>
-      <hr style="width: 100%;">
+<br>
+<br>
+<form (ngSubmit)="onWorkoutSubmit(workoutForm)" #workoutForm="ngForm">
+  <div class="row" *ngFor="let exerciseNumber of exerciseArr">
+    <div class="col-lg-2">
+      <input type="text" class="form-control" placeholder="Übung {{exerciseNumber + 1}}" name="uebung{{exerciseNumber}}" ngModel>
     </div>
-    <div class="row" style="margin-top: 15px;" *ngFor="let count of exerciseCount">
-      <div class="col" style="border-right: 1px solid rgba(0,0,0,.1)">
-        <input type="text" class="form-control" name="uebung{{count}}" placeholder="Übung {{count + 1}}" ngModel>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control" name="satz1uebung{{count}}" placeholder="Satz 1" ngModel>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control" name="satz2uebung{{count}}" placeholder="Satz 2" ngModel>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control" name="satz3uebung{{count}}" placeholder="Satz 3" ngModel>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control" name="satz4uebung{{count}}" placeholder="Satz 4" ngModel>
-      </div>
-      <div class="col">
-        <input type="number" class="form-control" name="satz5uebung{{count}}" placeholder="Satz 5" ngModel>
-      </div>
+    <div class="col-lg-2">
+      <input type="number" class="form-control" placeholder="Satz 1" name="uebung{{exerciseNumber}}satz1" ngModel>
+      <input type="number" class="form-control" placeholder="Gewicht" name="uebung{{exerciseNumber}}satz1kg" ngModel>
     </div>
-    <hr>
-    <div class="row">
-      <div class="col">
-        <label>Datum:</label>
-        <select name="daySelector" id="daySelector" class="form-control" [(ngModel)]="selectedDay">
-          <option *ngFor="let day of getDays()" value="{{day}}">{{day}}</option>
-        </select>
-        <select name="monthSelector" id="monthSelector" class="form-control" [(ngModel)]="selectedMonth">
-          <option *ngFor="let month of months" value="{{month}}">{{month}}</option>
-        </select>
-        <select name="yearSelector" id="yearSelector" class="form-control" [(ngModel)]="selectedYear">
-          <option value="2017">2017</option>
-          <option value="2018">2018</option>
-          <option value="2019">2019</option>
-        </select>
-      </div>
-      <div class="col">
-        <button type="button" class="btn btn-success" (click)="onAddExercise()">+</button>
-        <button type="button" class="btn btn-danger" style="width: 35px" (click)="onRemoveExercise()">-</button>
-        <button class="btn btn-primary" type="submit" style="float: right">Workout Speichern</button>
-        <button class="btn btn-secondary" (click)="onClearForm()" style="float: right;">Zurück</button>
-      </div>
+    <div class="col-lg-2">
+      <input type="number" class="form-control" placeholder="Satz 2" name="uebung{{exerciseNumber}}satz2" ngModel>
+      <input type="number" class="form-control" placeholder="Gewicht" name="uebung{{exerciseNumber}}satz2kg" ngModel>
     </div>
-  </form>
+    <div class="col-lg-2">
+      <input type="number" class="form-control" placeholder="Satz 3" name="uebung{{exerciseNumber}}satz3" ngModel>
+      <input type="number" class="form-control" placeholder="Gewicht" name="uebung{{exerciseNumber}}satz3kg" ngModel>
+    </div>
+    <div class="col-lg-2">
+      <input type="number" class="form-control" placeholder="Satz 4" name="uebung{{exerciseNumber}}satz4" ngModel>
+      <input type="number" class="form-control" placeholder="Gewicht" name="uebung{{exerciseNumber}}satz4kg" ngModel>
+    </div>
+    <div class="col-lg-2">
+      <input type="number" class="form-control" placeholder="Satz 5" name="uebung{{exerciseNumber}}satz5" ngModel>
+      <input type="number" class="form-control" placeholder="Gewicht" name="uebung{{exerciseNumber}}satz5kg" ngModel>
+    </div>
+  </div>
   <br>
-</div>
+  <br>
+  <div class="row" *ngIf="exerciseArr.length > 0">
+    <div class="col-md text-left">
+      <label class="align-top">An welchem Tag fand Ihr Workout statt?</label>
+    </div>
+    <div class="col-md text-center">
+      <select name="day" id="day" class="form-control" [(ngModel)]="selectedDay">
+        <option *ngFor="let day of calendarService.getDaysArr(calendarService.monthConverter(selectedMonth), selectedYear)">{{day}}</option>
+      </select>
+    </div>
+    <div class="col-md text-center">
+      <select name="month" class="form-control" [(ngModel)]="selectedMonth">
+        <option *ngFor="let month of calendarService.months">{{month}}</option>
+      </select>
+    </div>
+    <div class="col-md text-center">
+      <select name="year" class="form-control" [(ngModel)]="selectedYear">
+        <option>2017</option>
+        <option>2018</option>
+        <option>2019</option>
+      </select>
+    </div>
+    <div class="col-md text-right">
+      <button class="btn btn-primary" type="submit">Workout speichern</button>
+    </div>
+  </div>
+</form>
+<br>
+<br>

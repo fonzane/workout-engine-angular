@@ -1,0 +1,11 @@
+mat-card {
+  margin-top: 5px;
+}
+
+mat-form-field {
+  display: block;
+}
+
+form button:last-child {
+  float: right;
+}

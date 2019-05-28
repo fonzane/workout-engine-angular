@@ -1,9 +1,11 @@
-export class Exercise {
-    public name: string;
-    public sets: number[];
+import { Set } from './set.model';
 
-    constructor(name: string, sets: number[]) {
-        this.name = name;
-        this.sets = sets;
-    }
+export class Exercise{
+  public name: string;
+  public sets: Set[];
+
+  constructor(name: string, sets: Set[]) {
+    this.name = name;
+    this.sets = sets;
+  }
 }

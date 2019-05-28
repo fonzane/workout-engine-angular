@@ -1,13 +1,10 @@
-# WorkoutEngineAngular
-Ein simpler Workout Tracker geschrieben mit Angular und Firebase im Backend. Zuerst kann ein User erstellt werden oder der zur Default-Login des Testaccounts genutzt werden. Workouts werden Userspezifisch in die Datenbank eingetragen. Außerdem können sie detailliert unter `Workouts bearbeiten` bearbeitet, oder unter `Workout Kalender` im Kalendar angezeigt werden. Diese Erstellung dieses Projekts diente in erster Linie dem Lernen. Es ist (noch) nicht für den öffentlichen Gebrauch gedacht.
-
-# WorkoutEngineAngular
+# WorkoutEngineNew
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
 
 ## Development server
 
-First run `npm install` and then `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
