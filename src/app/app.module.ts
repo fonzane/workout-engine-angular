@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule,  MatInputModule, MatButtonModule, MatTableModule, MatProgressSpinnerModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,7 +14,6 @@ import { WorkoutFormComponent } from './workout-form/workout-form.component';
 import { WorkoutCalendarComponent } from './workout-calendar/workout-calendar.component';
 import { WorkoutEditComponent } from './workout-edit/workout-edit.component';
 import { AuthComponent } from './auth/auth.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [

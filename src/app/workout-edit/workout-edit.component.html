@@ -16,36 +16,36 @@
       </div>
     </div>
     <div class="row" *ngFor="let exercise of workout.exercises" style="cursor: pointer" (click)="fillForm(exercise, editForm)">
-      <div class="col-sm">
+      <div class="col-md">
         {{ exercise.name }}
       </div>
-      <div class="col-sm" *ngFor="let set of exercise.sets">
+      <div class="col-md" *ngFor="let set of exercise.sets">
         {{ set.rep }} mal {{ set.weight }} kg
       </div>
     </div>
     <br>
     <form #editForm="ngForm">
       <div class="row">
-        <div class="col-sm-2">
+        <div class="col-md-2">
           <input type="text" class="form-control" name="uebung" placeholder="Übung" required ngModel>
         </div>
-        <div class="col-sm-2"  *ngFor="let i of [1,2,3,4,5]">
+        <div class="col-md-2"  *ngFor="let i of [1,2,3,4,5]">
           <input type="number" class="form-control" name="rep{{i}}" placeholder="Satz {{i}}" ngModel>
           <input type="number" class="form-control" name="weight{{i}}" placeholder="Gewicht" ngModel>
         </div>
       </div>
       <br>
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-md-3 text-center text-md-left">
           <button mat-raised-button color="primary" type="button" (click)="onAddExercise(editForm, workout)">Hinzufügen/Ersetzen</button>
         </div>
-        <div class="col-sm-3 text-center">
+        <div class="col-md-3 text-center">
           <button mat-raised-button color="accent" type="button" (click)="onClearForm(editForm)">Leeren</button>
         </div>
-        <div class="col-sm-3 text-center">
+        <div class="col-md-3 text-center">
           <button mat-raised-button color="warn" type="button" (click)="onRemoveExercise(editForm, workout)">Löschen</button>
         </div>
-        <div class="col-sm-3 text-right">
+        <div class="col-md-3 text-center text-md-right">
           <button mat-raised-button color="primary" style="background-color:green" type="button" (click)="onSaveWorkouts()">Speichern</button>
         </div>
       </div>

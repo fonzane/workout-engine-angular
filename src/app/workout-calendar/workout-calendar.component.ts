@@ -75,6 +75,10 @@ export class WorkoutCalendarComponent implements OnInit {
   }
 
   onNextMonth() {
+    if (this.showTable) {
+      return;
+    }
+
     let month = this.month + 1;
     let year = this.year;
 
@@ -90,6 +94,9 @@ export class WorkoutCalendarComponent implements OnInit {
   }
 
   onPrevMonth() {
+    if (this.showTable) {
+      return;
+    }
     let month = this.month - 1;
     let year = this.year;
 
