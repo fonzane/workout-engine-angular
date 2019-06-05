@@ -17,9 +17,11 @@ export class WorkoutFormComponent implements OnInit {
 
   exerciseArr: number[] = [];
 
-  selectedDay = '1';
-  selectedMonth = 'Mai';
-  selectedYear = '2019';
+  date = new Date();
+
+  selectedDay = this.date.getDate();
+  selectedMonth = this.calendarService.months[this.date.getMonth()];
+  selectedYear = this.date.getFullYear();
 
   constructor(public calendarService: CalendarService,
               private workoutService: WorkoutService,

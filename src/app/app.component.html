@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['workout-form']">Workout Engine</a>
     <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
@@ -14,6 +14,9 @@
           <a class="nav-link" [routerLink]="['workout-calendar']" routerLinkActive="active" >Workout Kalender</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" [routerLink]="['workout-graph']" routerLinkActive="active" >Workout Graf</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" [routerLink]="['workout-edit']" routerLinkActive="active" >Workouts bearbeiten</a>
         </li>
       </ul>
@@ -22,8 +25,8 @@
           <a class="nav-link" routerLinkActive="active" routerLink="authenticate">Login</a>
         </li>
         <li class="nav-item" *ngIf="this.authService.isAuthenticated()" style="cursor: pointer">
-            <a class="nav-link" (click)="onLogout()">Logout</a>
-          </li>
+          <a class="nav-link" (click)="onLogout()">Logout</a>
+        </li>
       </ul>
     </div>
   </div>

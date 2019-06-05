@@ -1,0 +1,17 @@
+<mat-spinner style="margin:auto" *ngIf="isLoading"></mat-spinner>
+<div *ngIf="!isLoading">
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            [colors]="chartColors">
+    </canvas>
+  </div>
+</div>
+
+<select id="exerciseSelector" class="form-control" (input)="onExerciseChange($event.target.value)">
+  <option value="{{exercise.key}}" *ngFor="let exercise of exercises | keyvalue">{{exercise.key}}</option>
+</select>
